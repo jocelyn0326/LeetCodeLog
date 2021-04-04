@@ -16,14 +16,8 @@ public class Solution {
         var leftClone = GetTargetCopy(original.left, cloned.left, target);
         if (leftClone != null) {
             return leftClone;
+        }else{
+            return GetTargetCopy(original.right, cloned.right, target);
         }
-
-        var rightClone = GetTargetCopy(original.right, cloned.right, target);
-        if (rightClone != null) {
-            return rightClone;
-        }
-        
-        return null;
-        
     }
 }
