@@ -1,20 +1,18 @@
 public class Solution {
     public int[] NextGreaterElement(int[] nums1, int[] nums2) {
-        var dic = new Dictionary<int,int>();
+        var next_greatest = new Dictionary<int,int>();
         var stack = new Stack<int>();
-        for(int i = nums2.Length -1 ; i >= 0 ; i--){
-            while(stack.Count >0 && nums2[i] > stack.Peek()){
-                stack.Pop();
+        foreach(int num in nums2){
+            while(stack.Count() !=0 && num > stack.Peek()){
+                next_greatest.Add(stack.Pop(), num);
             }
-            dic.Add(nums2[i],stack.Count >0 ? stack.Peek(): -1);
-            stack.Push(nums2[i]);
+            stack.Push(num);
         }
-        var res = new int[nums1.Length];
-        int j = 0;
-        foreach(int num in nums1){
-            res[j] = dic[num];
-            j++;
+        
+        for(int i =0; i<nums1.Length; i++){
+            int value = 0;
+            nums1[i]=next_greatest.TryGetValue(nums1[i], out value)? value: -1;
         }
-        return res;
+        return nums1;
     }
 }
