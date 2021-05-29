@@ -14,6 +14,7 @@
 public class Solution {
     public IList<IList<int>> LevelOrder(TreeNode root) {
         List<IList<int>> res = new List<IList<int>>();
+        if (root == null) return res;
         AddtoLevel(root, 1, res);
         return res;
     }
