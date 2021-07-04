@@ -1,6 +1,10 @@
 public class Solution {
     public string FrequencySort(string s) {
-         return string.Join("",s.GroupBy(ch=>ch).OrderByDescending(gr=>gr.Count()).SelectMany(gr=>gr));
+         return new string(s.GroupBy(c => c)
+                    .OrderByDescending(chars => chars.Count())
+                    .SelectMany(chars => chars)
+                    .ToArray());
+        
         
     }
 }
