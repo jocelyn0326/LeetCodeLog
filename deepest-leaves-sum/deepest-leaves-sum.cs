@@ -13,20 +13,22 @@
  */
 public class Solution {
     public int DeepestLeavesSum(TreeNode root) {
-        var cur = new Queue<TreeNode>();
-        int deepestLeavesSum = 0;
-        cur.Enqueue(root);
-        while(cur.Count() > 0){
-            deepestLeavesSum =0;
-            var count = cur.Count();
-            for (int i =0; i<count; i++){
-                var node = cur.Dequeue();
-                deepestLeavesSum+=node.val;
-                if (node.left != null) cur.Enqueue(node.left);
-                if (node.right != null) cur.Enqueue(node.right);
-            }
-                       
-        }
-        return deepestLeavesSum;
+        var queue = new Queue<TreeNode>();
+    var result = 0;
+    queue.Enqueue(root);
+    while(queue.Count > 0){
+        
+        var count = queue.Count;
+        result = 0;
+        
+        for (var i = 0; i < count; i++){
+            var node = queue.Dequeue();
+            
+            result += node.val;
+            if (node.left != null) queue.Enqueue(node.left);
+            if (node.right != null) queue.Enqueue(node.right);
+        }                       
+    }
+    return result;
     }
 }
