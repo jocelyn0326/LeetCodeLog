@@ -25,8 +25,8 @@ public class Solution {
             var i = index[val];
 
             return new TreeNode(val) {
-                right = Build(i + 1, right),
-                left = Build(left, i - 1)
+                right = Build(i + 1, right),//index of right subtree
+                left = Build(left, i - 1)//index of left subtree
             };
         }
     }
