@@ -1,22 +1,15 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        res = {}
-        for value in strs:
-            char_dict: dict[str, int] = {}
-            for char in value:
-                if char in char_dict:
-                    char_dict[char] += 1
-                else:
-                    char_dict[char] = 1
-            key_list=[]
-            for k,v in char_dict.items():
-                key_list.append(k+ str(v))
+        res = defaultdict(list)
+        for word in strs:
+            from collections import Counter
+            counter = Counter(word)
                 
-            key_list.sort()
+            key_list = []
+            for char in "abcdefghijklmnopqrstuvwxyz":
+                key_list.append(char + str(counter[char]))
             key = "".join(key_list)
-            if key not in res:
-                res[key] = [value]
-            else:
-                res[key].append(value)
+            
+            res[key].append(word)
         return res.values()
         
