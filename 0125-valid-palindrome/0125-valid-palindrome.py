@@ -1,22 +1,24 @@
 import string
 
 class Solution:
+    # 1. Covert the string to lowercase
+    # 2. Determine if the charater is alphanumeric
+    # 3. Use two pointers to compare
     def isPalindrome(self, s: str) -> bool:
         s = s.lower()
-        l, r = 0, len(s)-1
+        print(s)
+        newS = ""
+        for c in s:
+            if self.isAlphanmeric(c):
+                newS += c
+        l, r = 0, len(newS)-1
         while l < r:
-            while l < r and not self.isAlphaNum(s[l]):
-                l += 1
-            while r > l and not self.isAlphaNum(s[r]):
-                r -= 1
-            if s[l] != s[r]:
+            if newS[l] != newS[r]:
                 return False
-            l, r = l+1, r-1
+            l += 1
+            r -= 1
         return True
+    def isAlphanmeric(self, c: str) -> bool:
+        if ord('a') <= ord(c) <= ord('z') or ord('0') <=  ord(c) <= ord('9'):
+                return True
     
-    def isAlphaNum(self, c: str) -> bool:
-        return (ord('A') <= ord(c) <= ord('Z') or
-                ord('a') <= ord(c) <= ord('z') or
-                ord('0') <= ord(c) <= ord('9'))
-          
-                    
