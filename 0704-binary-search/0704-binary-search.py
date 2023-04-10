@@ -3,7 +3,7 @@ class Solution:
         left = 0
         right = len(nums) - 1
         while left <= right:
-            cur = int((right + left) / 2)
+            cur = int((right - left) / 2) + left
             if nums[cur] == target:
                 return cur
             elif nums[cur] > target:
