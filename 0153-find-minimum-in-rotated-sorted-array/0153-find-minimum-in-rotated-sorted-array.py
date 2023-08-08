@@ -8,13 +8,13 @@ class Solution:
         res=nums[0]
         l, r = 0, len(nums)-1
         
-        # If the array is sorted
         while l <= r:
+            # If the array is sorted
             if nums[l] < nums[r]:
                 res = min(res, nums[l])
                 break
             # Do the binary search here
-            m = (l+r) //2
+            m = (l+r) // 2
             res = min(res, nums[m])
             if nums[m] >= nums[l]:
                 l = m+1
