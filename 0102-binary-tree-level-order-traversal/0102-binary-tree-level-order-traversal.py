@@ -6,14 +6,13 @@
 #         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        # BFS: FIFO
+        q=collections.deque()
         res=[]
-        q = collections.deque()
         q.append(root)
         while q:
-            q_len=len(q)
-            level = []
-            for i in range(q_len):
+            level=[]
+            qLen=len(q)
+            for a in range(qLen):
                 node = q.popleft()
                 if node:
                     level.append(node.val)
